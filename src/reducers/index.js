@@ -1,5 +1,7 @@
-import React from 'react';
+import { combineReducers } from 'redux';
+import users from './usersReducer';
 
-export default function RootReducer (state, action){
-  return state;
-}
+const rootReducer = combineReducers({
+    users: users
+});
+export default rootReducer;

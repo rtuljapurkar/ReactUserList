@@ -1,11 +1,15 @@
 import React from 'react';
+import { Table } from 'react-bootstrap';
 import UserListElement from './UserListElement';
 import {connect} from 'react-redux';
+import DeleteUser from './DeleteUser';
 
-class UserList extends React.Component{
+export default class UserList extends React.Component{
     render(){
+
         return(
-            <table>
+                <div>
+                    <Table bordered hover striped responsive   >
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -16,29 +20,29 @@ class UserList extends React.Component{
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                this.props.users.map(
-                                        (user, index) => {
-                                        return(
+                            {this.props.users.map((user, index) => {
+                                    return(
                                                 <UserListElement key={user.id} user = {user} />
                                               );
                                         }
                                 )
                             }
                         </tbody>
-                    </table>
+                    </Table>
+                    <DeleteUser/>
+                </div>
         );
     }
 }
 
 UserList.propTypes = {
-  users: React.PropTypes.object.isRequired
+  users: React.PropTypes.array.isRequired
 };
 
-function mapStateToProps(state) {
-  return({
-    users:  state.users
-  });
-}
-
-export default connect(mapStateToProps)(UserList);
+// function mapStateToProps(state) {
+//   return({
+//     users:  state.users
+//   });
+// }
+//
+// export default connect(mapStateToProps)(UserList);

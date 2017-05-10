@@ -1,8 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
-import App from './components/app';
+import App from './components/App';
 import {createStore} from 'redux';
-import RootReducer from './reducers/index';
+import rootReducer from './reducers/index';
 import {Provider} from 'react-redux';
 
 let users = [];
@@ -19,7 +19,7 @@ const initial_state = {
   users: users
 };
 
-const store = createStore(RootReducer, initial_state);
+const store = createStore(rootReducer, initial_state);
 
 render(<Provider store = {store}>
         <App/>
