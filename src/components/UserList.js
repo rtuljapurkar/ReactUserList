@@ -1,7 +1,8 @@
 import React from 'react';
 import UserListElement from './UserListElement';
+import {connect} from 'react-redux';
 
-export default class UserList extends React.Component{
+class UserList extends React.Component{
     render(){
         return(
             <table>
@@ -31,5 +32,13 @@ export default class UserList extends React.Component{
 }
 
 UserList.propTypes = {
-    users: React.PropTypes.array.isRequired
+  users: React.PropTypes.object.isRequired
 };
+
+function mapStateToProps(state) {
+  return({
+    users:  state.users
+  });
+}
+
+export default connect(mapStateToProps)(UserList);
